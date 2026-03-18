@@ -9,60 +9,54 @@
   body { font-family: system-ui, sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; }
   header { background: #1a1a2e; padding: 16px 24px; border-bottom: 2px solid #e63946; display: flex; align-items: center; gap: 12px; }
   header h1 { font-size: 1.2rem; color: #fff; }
-  .setup { max-width: 600px; margin: 40px auto; background: #1a1a2e; border-radius: 12px; padding: 28px; border: 1px solid #2a2a4a; }
-  .setup h2 { margin-bottom: 8px; color: #fff; }
-  .setup p { color: #aaa; font-size: 0.9rem; margin-bottom: 20px; }
-  label { display: block; font-size: 0.85rem; color: #aaa; margin-bottom: 6px; }
-  input[type=text], input[type=password] { width: 100%; padding: 10px 14px; background: #0f0f1a; border: 1px solid #2a2a4a; border-radius: 8px; color: #fff; font-size: 0.95rem; margin-bottom: 16px; }
-  input:focus { outline: none; border-color: #e63946; }
-  .btn { background: #e63946; color: #fff; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 600; width: 100%; transition: background 0.2s; }
+  .controls { padding: 16px 24px; background: #1a1a2e; border-bottom: 1px solid #2a2a4a; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .controls input[type=number], .controls select { background: #0f0f1a; border: 1px solid #2a2a4a; color: #fff; padding: 8px 12px; border-radius: 8px; font-size: 0.85rem; }
+  .ctrl-group { display: flex; flex-direction: column; gap: 4px; }
+  .ctrl-group label { font-size: 0.8rem; color: #aaa; }
+  .btn { background: #e63946; color: #fff; border: none; padding: 10px 24px; border-radius: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 600; transition: background 0.2s; }
   .btn:hover { background: #c1121f; }
   .btn:disabled { background: #444; cursor: not-allowed; }
-  .controls { padding: 16px 24px; background: #1a1a2e; border-bottom: 1px solid #2a2a4a; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
-  .controls select, .controls input[type=number] { background: #0f0f1a; border: 1px solid #2a2a4a; color: #fff; padding: 8px 12px; border-radius: 8px; font-size: 0.85rem; }
-  .controls label { font-size: 0.8rem; color: #aaa; margin: 0; }
-  .ctrl-group { display: flex; flex-direction: column; gap: 4px; }
-  #runBtn { width: auto; padding: 10px 24px; }
+  .btn.secondary { background: #2a2a4a; }
+  .btn.secondary:hover { background: #3a3a6a; }
   .status { padding: 12px 24px; font-size: 0.85rem; color: #aaa; background: #13131f; border-bottom: 1px solid #1a1a2e; min-height: 38px; }
   .status.running { color: #f4a261; }
   .status.done { color: #2a9d8f; }
   .status.error { color: #e63946; }
-  .results { padding: 20px 24px; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
-  .card { background: #1a1a2e; border-radius: 12px; border: 1px solid #2a2a4a; overflow: hidden; transition: transform 0.15s, border-color 0.15s; }
-  .card:hover { transform: translateY(-2px); border-color: #e63946; }
-  .card img { width: 100%; height: 180px; object-fit: cover; background: #0f0f1a; }
-  .card-body { padding: 14px; }
-  .card-title { font-size: 0.88rem; color: #ddd; margin-bottom: 10px; line-height: 1.4; }
-  .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-  .badge { font-size: 0.75rem; padding: 3px 8px; border-radius: 20px; font-weight: 600; }
-  .badge.bulk { background: #e6394622; color: #e63946; border: 1px solid #e6394655; }
-  .badge.graded { background: #f4a26122; color: #f4a261; border: 1px solid #f4a26155; }
-  .badge.sealed { background: #48cae422; color: #48cae4; border: 1px solid #48cae455; }
-  .badge.nonenglish { background: #a8dadc22; color: #a8dadc; border: 1px solid #a8dadc55; }
-  .badge.holo { background: #c77dff33; color: #c77dff; border: 1px solid #c77dff77; }
-  .badge.mixed { background: #e9c46a22; color: #e9c46a; border: 1px solid #e9c46a55; }
-  .badge.ai { background: #9b5de522; color: #c77dff; border: 1px solid #9b5de555; }
-  .badge.buynow { background: #2a9d8f33; color: #2a9d8f; border: 1px solid #2a9d8f77; font-weight: 700; }
-  .badge.makeoffer { background: #f4a26133; color: #f4a261; border: 1px solid #f4a26177; font-weight: 700; }
-  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
-  .stat { background: #0f0f1a; border-radius: 8px; padding: 8px 10px; }
-  .stat-label { font-size: 0.7rem; color: #888; margin-bottom: 2px; }
-  .stat-value { font-size: 1rem; font-weight: 700; color: #fff; }
-  .stat-value.green { color: #2a9d8f; }
-  .stat-value.yellow { color: #f4a261; }
-  .composition { background: #0f0f1a; border-radius: 8px; padding: 10px; margin-bottom: 12px; font-size: 0.78rem; color: #aaa; }
-  .composition strong { color: #e9c46a; display: block; margin-bottom: 6px; font-size: 0.8rem; }
-  .comp-row { display: flex; justify-content: space-between; padding: 2px 0; border-bottom: 1px solid #1a1a2e; }
-  .comp-row:last-child { border-bottom: none; }
-  .comp-row span:last-child { color: #fff; font-weight: 600; }
-  a.view-btn { display: block; text-align: center; background: #e63946; color: #fff; padding: 9px; border-radius: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: background 0.2s; }
-  a.view-btn:hover { background: #c1121f; }
-  .empty { text-align: center; padding: 60px 24px; color: #555; grid-column: 1/-1; }
-  .empty .icon { font-size: 3rem; margin-bottom: 12px; }
-  .summary-bar { padding: 10px 24px; background: #13131f; border-bottom: 1px solid #1a1a2e; font-size: 0.82rem; color: #888; display: flex; gap: 20px; flex-wrap: wrap; }
-  .summary-bar span { color: #aaa; }
-  .summary-bar strong { color: #2a9d8f; }
-  .saved-note { font-size: 0.75rem; color: #2a9d8f; margin-top: -12px; margin-bottom: 16px; }
+  #debugPanel { display:none; padding:12px 24px; background:#0a0a14; border-bottom:1px solid #2a2a4a; font-size:0.78rem; font-family:monospace; color:#aaa; white-space:pre-wrap; max-height:200px; overflow-y:auto; }
+  .summary-bar { display:none; padding:10px 24px; background:#13131f; border-bottom:1px solid #1a1a2e; font-size:0.82rem; color:#888; gap:20px; flex-wrap:wrap; }
+  .summary-bar strong { color:#2a9d8f; }
+  .results { padding:20px 24px; display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:16px; }
+  .empty { text-align:center; padding:60px 24px; color:#555; grid-column:1/-1; }
+  .empty .icon { font-size:3rem; margin-bottom:12px; }
+  .card { background:#1a1a2e; border-radius:12px; border:1px solid #2a2a4a; overflow:hidden; transition:transform 0.15s,border-color 0.15s; }
+  .card:hover { transform:translateY(-2px); border-color:#e63946; }
+  .card img { width:100%; height:180px; object-fit:cover; background:#0f0f1a; }
+  .card-body { padding:14px; }
+  .card-title { font-size:0.88rem; color:#ddd; margin-bottom:10px; line-height:1.4; }
+  .badges { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px; }
+  .badge { font-size:0.75rem; padding:3px 8px; border-radius:20px; font-weight:600; }
+  .badge.bulk { background:#e6394622; color:#e63946; border:1px solid #e6394655; }
+  .badge.graded { background:#f4a26122; color:#f4a261; border:1px solid #f4a26155; }
+  .badge.sealed { background:#48cae422; color:#48cae4; border:1px solid #48cae455; }
+  .badge.nonenglish { background:#a8dadc22; color:#a8dadc; border:1px solid #a8dadc55; }
+  .badge.holo { background:#c77dff33; color:#c77dff; border:1px solid #c77dff77; }
+  .badge.mixed { background:#e9c46a22; color:#e9c46a; border:1px solid #e9c46a55; }
+  .badge.ai { background:#9b5de522; color:#c77dff; border:1px solid #9b5de555; }
+  .badge.buynow { background:#2a9d8f33; color:#2a9d8f; border:1px solid #2a9d8f77; font-weight:700; }
+  .badge.makeoffer { background:#f4a26133; color:#f4a261; border:1px solid #f4a26177; font-weight:700; }
+  .stats { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px; }
+  .stat { background:#0f0f1a; border-radius:8px; padding:8px 10px; }
+  .stat-label { font-size:0.7rem; color:#888; margin-bottom:2px; }
+  .stat-value { font-size:1rem; font-weight:700; color:#fff; }
+  .stat-value.green { color:#2a9d8f; }
+  .stat-value.yellow { color:#f4a261; }
+  .composition { background:#0f0f1a; border-radius:8px; padding:10px; margin-bottom:12px; font-size:0.78rem; color:#aaa; }
+  .composition strong { color:#e9c46a; display:block; margin-bottom:6px; font-size:0.8rem; }
+  .comp-row { display:flex; justify-content:space-between; padding:2px 0; border-bottom:1px solid #1a1a2e; }
+  .comp-row:last-child { border-bottom:none; }
+  .comp-row span:last-child { color:#fff; font-weight:600; }
+  a.view-btn { display:block; text-align:center; background:#e63946; color:#fff; padding:9px; border-radius:8px; text-decoration:none; font-size:0.85rem; font-weight:600; transition:background 0.2s; }
+  a.view-btn:hover { background:#c1121f; }
 </style>
 </head>
 <body>
@@ -72,54 +66,44 @@
   <h1>Pokemon WOTC Arbitrage Filter</h1>
 </header>
 
-<div id="setupSection" class="setup" style="display:none">
-  <h2>eBay API Setup</h2>
-  <p>Enter your eBay Developer App ID (Client ID) from developer.ebay.com. Saved locally — one time only.</p>
-  <label>eBay App ID (Production Client ID)</label>
-  <input type="password" id="appIdInput" placeholder="YourName-AppName-PRD-..." />
-  <p id="savedNote" class="saved-note" style="display:none">✓ API key saved.</p>
-  <button class="btn" onclick="saveKey()">Save & Start Filtering</button>
+<div class="controls">
+  <div class="ctrl-group">
+    <label>Bulk max $/card</label>
+    <input type="number" id="maxBulk" value="0.20" step="0.01" min="0.01" style="width:80px">
+  </div>
+  <div class="ctrl-group">
+    <label>Non-English max $/card</label>
+    <input type="number" id="maxForeign" value="0.10" step="0.01" min="0.01" style="width:80px">
+  </div>
+  <div class="ctrl-group">
+    <label>Holo max $/card</label>
+    <input type="number" id="maxHolo" value="0.50" step="0.05" min="0.01" style="width:80px">
+  </div>
+  <div class="ctrl-group">
+    <label>Graded/Sealed max % of market</label>
+    <input type="number" id="gradedPct" value="50" step="5" min="10" max="90" style="width:70px">
+  </div>
+  <div class="ctrl-group">
+    <label>Results per term</label>
+    <select id="perPage">
+      <option value="50">50</option>
+      <option value="100" selected>100</option>
+      <option value="200">200</option>
+    </select>
+  </div>
+  <button class="btn" id="runBtn" onclick="runFilter()">🔍 Run Filter</button>
+  <button class="btn secondary" onclick="toggleDebug()">🐛 Debug</button>
 </div>
 
-<div id="mainSection" style="display:none">
-  <div class="controls">
-    <div class="ctrl-group">
-      <label>Bulk max $/card</label>
-      <input type="number" id="maxCPCBulk" value="0.20" step="0.01" min="0.01" style="width:80px">
-    </div>
-    <div class="ctrl-group">
-      <label>Non-English max $/card</label>
-      <input type="number" id="maxCPCForeign" value="0.10" step="0.01" min="0.01" style="width:80px">
-    </div>
-    <div class="ctrl-group">
-      <label>Holo max $/card</label>
-      <input type="number" id="maxCPCHolo" value="0.50" step="0.05" min="0.01" style="width:80px">
-    </div>
-    <div class="ctrl-group">
-      <label>Graded/Sealed max % of market</label>
-      <input type="number" id="gradedPct" value="50" step="5" min="10" max="90" style="width:70px">
-    </div>
-    <div class="ctrl-group">
-      <label>Results per term</label>
-      <select id="resultsPerTerm">
-        <option value="50">50</option>
-        <option value="100" selected>100</option>
-        <option value="200">200</option>
-      </select>
-    </div>
-    <button class="btn" id="runBtn" onclick="runFilter()">🔍 Run Filter</button>
-    <button class="btn" onclick="showSetup()" style="background:#2a2a4a;width:auto;padding:10px 16px">⚙ API Key</button>
-  </div>
-  <div class="status" id="status">Ready. Click "Run Filter" to scan eBay listings.</div>
-  <div id="debugPanel" style="display:none;padding:12px 24px;background:#0a0a14;border-bottom:1px solid #2a2a4a;font-size:0.78rem;font-family:monospace;color:#aaa;white-space:pre-wrap;max-height:200px;overflow-y:auto"></div>
-  <div class="summary-bar" id="summaryBar" style="display:none"></div>
-  <div class="results" id="results">
-    <div class="empty"><div class="icon">🎴</div><p>No results yet. Click Run Filter to start.</p></div>
-  </div>
+<div class="status" id="status">Ready. Click "Run Filter" to scan eBay listings.</div>
+<div id="debugPanel"></div>
+<div class="summary-bar" id="summaryBar"></div>
+<div class="results" id="results">
+  <div class="empty"><div class="icon">🎴</div><p>No results yet. Click Run Filter to start.</p></div>
 </div>
 
 <script>
-const PROXY = "https://api.allorigins.win/raw?url=";
+const API = "/.netlify/functions/ebay";
 
 const SEARCH_TERMS = [
   "vintage pokemon lot","vintage pokemon bulk","WOTC pokemon bulk",
@@ -127,78 +111,52 @@ const SEARCH_TERMS = [
   "pokemon bulk lot","pokemon card collection lot",
   "pomekon cards lot","pokeman cards lot","pokamon cards lot",
   "pokemons cards lot","pokemom cards lot","pokmen cards lot",
-  "pokmon cards lot","poekmon cards lot","pokémon lot vintage",
-  "pokimon cards lot","pokemon cards lot","pokmeon cards lot",
-  "pocemon cards lot","pokamon bulk lot","pokeman bulk lot",
-  "vintag pokemon lot","vintge pokemon lot","vinatge pokemon lot",
-  "wotc pokeman","wotc pokamon","wizards coast pokemon lot",
-  "pokemon bluk lot","pokemon buld lot","pokemon buk lot",
+  "pokmon cards lot","poekmon cards lot","pokimon cards lot",
+  "pokmeon cards lot","pocemon cards lot","pokamon bulk lot",
+  "pokeman bulk lot","vintag pokemon lot","vintge pokemon lot",
+  "vinatge pokemon lot","wotc pokeman","wotc pokamon",
+  "wizards coast pokemon lot","pokemon bluk lot","pokemon buld lot",
   "poke cards lot","poke card bulk","poke mon cards lot"
 ];
 
 const WOTC_SETS = ["base set","jungle","fossil","team rocket","gym heroes","gym challenge",
   "neo genesis","neo discovery","neo revelation","neo destiny","southern islands",
-  "legendary collection","wizards","wotc","1999","2000","2001","base","shadowless"];
-const GRADED_KW = ["psa","bgs","cgc","ace","sgc","graded","slab","slabbed"];
-const SEALED_KW = ["sealed","booster box","booster pack","factory sealed","sealed box",
-  "sealed pack","tin","etb","elite trainer box","theme deck","starter deck",
-  "blister","booster bundle","sealed product","unopened","mint sealed"];
-const HOLO_KW = ["holo","holos","holographic","holofoil","holo rare","holo lot","holo bulk"];
+  "legendary collection","wizards","wotc","1999","2000","2001","shadowless"];
+const GRADED_KW  = ["psa","bgs","cgc","ace","sgc","graded","slab","slabbed"];
+const SEALED_KW  = ["sealed","booster box","booster pack","factory sealed","tin","etb",
+  "elite trainer box","theme deck","starter deck","blister","booster bundle","unopened"];
+const HOLO_KW    = ["holo","holos","holographic","holofoil","holo rare"];
 const FOREIGN_KW = ["japanese","french","german","spanish","italian","korean","chinese",
-  "portuguese","polish","foreign","non-english","international","jp ","jpn"];
+  "portuguese","polish","foreign","non-english","international","jpn"];
 
-let appId = "";
+const has = (t, kws) => kws.some(k => t.includes(k));
+const isGraded  = t => has(t.toLowerCase(), GRADED_KW);
+const isSealed  = t => has(t.toLowerCase(), SEALED_KW);
+const isHolo    = t => has(t.toLowerCase(), HOLO_KW);
+const isForeign = t => has(t.toLowerCase(), FOREIGN_KW);
+const isWOTC    = t => has(t.toLowerCase(), WOTC_SETS) || t.toLowerCase().includes("vintage") || t.toLowerCase().includes("wotc");
 
 function dbg(msg) {
   const p = document.getElementById("debugPanel");
-  p.style.display = "block";
   p.textContent += msg + "\n";
   console.log(msg);
 }
-
-function saveKey() {
-  const v = document.getElementById("appIdInput").value.trim();
-  if (!v) { alert("Please enter your App ID"); return; }
-  appId = v;
-  localStorage.setItem("ebay_app_id", v);
-  document.getElementById("savedNote").style.display = "block";
-  setTimeout(showMain, 600);
-}
-function showSetup() {
-  document.getElementById("setupSection").style.display = "block";
-  document.getElementById("mainSection").style.display = "none";
-  const s = localStorage.getItem("ebay_app_id");
-  if (s) { document.getElementById("appIdInput").value = s; document.getElementById("savedNote").style.display = "block"; }
-}
-function showMain() {
-  document.getElementById("setupSection").style.display = "none";
-  document.getElementById("mainSection").style.display = "block";
-}
-function init() {
-  const s = localStorage.getItem("ebay_app_id");
-  if (s) { appId = s; showMain(); } else showSetup();
+function toggleDebug() {
+  const p = document.getElementById("debugPanel");
+  p.style.display = p.style.display === "none" ? "block" : "none";
 }
 function setStatus(msg, cls="") {
   const el = document.getElementById("status");
   el.textContent = msg; el.className = "status " + cls;
 }
 
-// --- Detection helpers ---
-const has = (text, kws) => kws.some(k => text.includes(k));
-const isGraded = t => has(t.toLowerCase(), GRADED_KW);
-const isSealed = t => has(t.toLowerCase(), SEALED_KW);
-const isHolo   = t => has(t.toLowerCase(), HOLO_KW);
-const isForeign= t => has(t.toLowerCase(), FOREIGN_KW);
-const isWOTC   = t => has(t.toLowerCase(), WOTC_SETS) || t.toLowerCase().includes("vintage") || t.toLowerCase().includes("wotc");
-
-// --- Card count extraction ---
 function extractCount(text) {
   const t = (text||"").toLowerCase();
   const patterns = [
-    /(\d{2,4})\s*\+?\s*cards?/i, /lot\s+of\s+(\d{2,4})/i, /(\d{2,4})\s*ct\b/i,
-    /(\d{2,4})\s*count/i, /(\d{2,4})\s*\+?\s*mixed/i, /(\d{2,4})\s*\+?\s*pokemon/i,
-    /(\d{2,4})\s*\+?\s*vintage/i, /(\d{2,4})\s*\+?\s*bulk/i, /bulk\s+of\s+(\d{2,4})/i,
-    /approx\w*\s+(\d{2,4})/i, /~\s*(\d{2,4})/i,
+    /(\d{2,4})\s*\+?\s*cards?/i,/lot\s+of\s+(\d{2,4})/i,/(\d{2,4})\s*ct\b/i,
+    /(\d{2,4})\s*count/i,/(\d{2,4})\s*\+?\s*mixed/i,/(\d{2,4})\s*\+?\s*pokemon/i,
+    /(\d{2,4})\s*\+?\s*vintage/i,/(\d{2,4})\s*\+?\s*bulk/i,/bulk\s+of\s+(\d{2,4})/i,
+    /approx\w*\s+(\d{2,4})/i,/~\s*(\d{2,4})/i,
   ];
   for (const p of patterns) {
     const m = t.match(p);
@@ -207,81 +165,34 @@ function extractCount(text) {
   return null;
 }
 
-// --- Sold price lookup (last 10 identical) ---
-async function fetchSoldPrice(title) {
-  try {
-    const q = encodeURIComponent(title.replace(/psa|bgs|cgc|graded|slab|sealed/gi,"").trim().substring(0,60));
-    const url = PROXY + encodeURIComponent(`https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findCompletedItems&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=${appId}&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=${q}&itemFilter(0).name=SoldItemsOnly&itemFilter(0).value=true&categoryId=2536&sortOrder=EndTimeSoonest&paginationInput.entriesPerPage=10&outputSelector=SellingStatus`);
-    const d = await (await fetch(url)).json();
-    const items = d?.findCompletedItemsResponse?.[0]?.searchResult?.[0]?.item || [];
-    const prices = items.map(i => parseFloat(i.sellingStatus?.[0]?.currentPrice?.[0]?.__value__||0)).filter(p=>p>0);
-    return prices.length ? prices.reduce((a,b)=>a+b,0)/prices.length : null;
-  } catch { return null; }
+async function ebaySearch(keywords, perPage) {
+  const res = await fetch(API, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ type: "search", keywords, perPage })
+  });
+  return res.json();
 }
 
-// --- AI composition analysis ---
-async function analyzeComposition(imgUrl, title, desc, totalCount, rates) {
-  try {
-    const prompt = `You are analyzing an eBay Pokemon card lot listing.
-Title: "${title}"
-Description: "${desc||"(none)"}"
-Estimated total cards: ${totalCount}
-
-Identify the composition of this lot. Return ONLY a JSON object with these exact keys:
-{
-  "holos": <integer count of holographic cards>,
-  "foreign": <integer count of non-English cards>,
-  "graded": <integer count of graded/slabbed cards>,
-  "bulk": <integer count of regular bulk commons/uncommons/rares>,
-  "reasoning": "<one sentence explaining your estimate>"
-}
-All counts must sum to exactly ${totalCount}. Base estimates on any numbers mentioned in the title/description, then use the photo. If truly unknown, assume all bulk.`;
-
-    const content = imgUrl
-      ? [{ type:"image", source:{ type:"url", url:imgUrl } }, { type:"text", text:prompt }]
-      : [{ type:"text", text:prompt }];
-
-    const resp = await fetch("https://api.anthropic.com/v1/messages", {
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body: JSON.stringify({ model:"claude-sonnet-4-20250514", max_tokens:300, messages:[{ role:"user", content }] })
-    });
-    const d = await resp.json();
-    const txt = (d?.content?.[0]?.text||"").replace(/```json|```/g,"").trim();
-    const parsed = JSON.parse(txt);
-    // Ensure sum matches
-    const sum = (parsed.holos||0)+(parsed.foreign||0)+(parsed.graded||0)+(parsed.bulk||0);
-    if (sum !== totalCount) {
-      const diff = totalCount - sum;
-      parsed.bulk = (parsed.bulk||0) + diff;
-    }
-    return parsed;
-  } catch { return null; }
+async function ebaySold(keywords) {
+  const res = await fetch(API, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ type: "sold", keywords })
+  });
+  return res.json();
 }
 
-// --- Weighted threshold calculation ---
-async function calcBlendedThreshold(comp, totalCount, rates, avgGradedRate) {
-  const { holos=0, foreign=0, graded=0, bulk=0 } = comp;
-  const gradedVal = avgGradedRate ? avgGradedRate * 0.5 : rates.bulk * 3; // fallback if no market data
-  const weighted =
-    (holos * rates.holo) +
-    (foreign * rates.foreign) +
-    (graded * gradedVal) +
-    (bulk * rates.bulk);
-  return weighted / totalCount;
-}
-
-// --- AI count from photo ---
-async function aiCountFromPhoto(imgUrl, title) {
+async function aiCount(imgUrl, title) {
   try {
     const resp = await fetch("https://api.anthropic.com/v1/messages", {
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        model:"claude-sonnet-4-20250514", max_tokens:50,
-        messages:[{ role:"user", content:[
-          { type:"image", source:{ type:"url", url:imgUrl } },
-          { type:"text", text:`eBay listing: "${title}". Estimate total Pokemon card count from this photo. Reply with ONE integer only.` }
+        model: "claude-sonnet-4-20250514", max_tokens: 50,
+        messages: [{ role: "user", content: [
+          { type: "image", source: { type: "url", url: imgUrl } },
+          { type: "text", text: `eBay listing: "${title}". Estimate total Pokemon card count. Reply ONE integer only.` }
         ]}]
       })
     });
@@ -291,147 +202,148 @@ async function aiCountFromPhoto(imgUrl, title) {
   } catch { return null; }
 }
 
-// --- eBay search ---
-async function searchTerm(term, perPage) {
-  const q = encodeURIComponent(term);
-  const url = PROXY + encodeURIComponent(`https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=${appId}&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=${q}&categoryId=2536&paginationInput.entriesPerPage=${perPage}&sortOrder=StartTimeNewest&outputSelector=SellingStatus&outputSelector=PictureURLSuperSize&outputSelector=PictureURLLarge&outputSelector=ListingInfo&itemFilter(0).name=ListingType&itemFilter(0).value(0)=AuctionWithBIN&itemFilter(0).value(1)=FixedPrice`);
-  const r = await fetch(url);
-  if (!r.ok) throw new Error(`HTTP ${r.status}`);
-  const d = await r.json();
-  return d?.findItemsByKeywordsResponse?.[0]?.searchResult?.[0]?.item || [];
+async function aiComposition(imgUrl, title, totalCount, rates) {
+  try {
+    const prompt = `You are analyzing an eBay Pokemon card lot.
+Title: "${title}"
+Total cards: ${totalCount}
+Return ONLY JSON with keys: holos, foreign, graded, bulk (integers summing to ${totalCount}), reasoning (string).`;
+    const content = imgUrl
+      ? [{ type:"image", source:{ type:"url", url:imgUrl } }, { type:"text", text:prompt }]
+      : [{ type:"text", text:prompt }];
+    const resp = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ model:"claude-sonnet-4-20250514", max_tokens:300, messages:[{ role:"user", content }] })
+    });
+    const d = await resp.json();
+    const txt = (d?.content?.[0]?.text||"").replace(/```json|```/g,"").trim();
+    const parsed = JSON.parse(txt);
+    const sum = (parsed.holos||0)+(parsed.foreign||0)+(parsed.graded||0)+(parsed.bulk||0);
+    if (sum !== totalCount) parsed.bulk = (parsed.bulk||0) + (totalCount - sum);
+    return parsed;
+  } catch { return null; }
 }
 
-// --- Main runner ---
 async function runFilter() {
-  if (!appId) { showSetup(); return; }
   const rates = {
-    bulk: parseFloat(document.getElementById("maxCPCBulk").value)||0.20,
-    foreign: parseFloat(document.getElementById("maxCPCForeign").value)||0.10,
-    holo: parseFloat(document.getElementById("maxCPCHolo").value)||0.50,
+    bulk:    parseFloat(document.getElementById("maxBulk").value)||0.20,
+    foreign: parseFloat(document.getElementById("maxForeign").value)||0.10,
+    holo:    parseFloat(document.getElementById("maxHolo").value)||0.50,
   };
   const gradedPct = (parseFloat(document.getElementById("gradedPct").value)||50)/100;
-  const perPage = parseInt(document.getElementById("resultsPerTerm").value)||100;
-  const taxRate = 0.08;
+  const perPage   = parseInt(document.getElementById("perPage").value)||100;
+  const taxRate   = 0.08;
 
-  document.getElementById("debugPanel").textContent = "";
   document.getElementById("runBtn").disabled = true;
+  document.getElementById("debugPanel").textContent = "";
   document.getElementById("summaryBar").style.display = "none";
   document.getElementById("results").innerHTML = `<div class="empty"><div class="icon">⏳</div><p>Scanning eBay...</p></div>`;
-  dbg(`Starting run... App ID: ${appId.substring(0,12)}...`);
 
-  const seen = new Set();
-  const passing = [];
+  const seen = new Set(), passing = [];
   let totalFetched = 0, aiUsed = 0;
-  const dropLog = { noWOTC:0, auction:0, noCount:0, tooExpensive:0, gradedFail:0, sampleTitles:[] };
+  const drop = { noWOTC:0, noCount:0, tooExpensive:0 };
 
   for (let i = 0; i < SEARCH_TERMS.length; i++) {
     const term = SEARCH_TERMS[i];
-    setStatus(`🔍 Searching "${term}" (${i+1}/${SEARCH_TERMS.length})...`, "running");
+    setStatus(`🔍 "${term}" (${i+1}/${SEARCH_TERMS.length})...`, "running");
     try {
-      const items = await searchTerm(term, perPage);
+      const data = await ebaySearch(term, perPage);
+      if (data.error) { dbg(`ERROR ${term}: ${data.error} ${JSON.stringify(data.detail||"")}`); continue; }
+      const items = data.itemSummaries || [];
       totalFetched += items.length;
-      dbg(`"${term}" → ${items.length} results`);
+      dbg(`"${term}" → ${items.length} items`);
 
       for (const item of items) {
-        const id = item.itemId?.[0];
+        const id = item.itemId;
         if (!id || seen.has(id)) continue;
         seen.add(id);
 
-        const title = item.title?.[0]||"";
-        if (!isWOTC(title)) { dropLog.noWOTC++; continue; }
-        if (dropLog.sampleTitles.length < 5) dropLog.sampleTitles.push(title.substring(0,60));
+        const title = item.title||"";
+        if (!isWOTC(title)) { drop.noWOTC++; continue; }
 
-        const listingType = item.listingInfo?.[0]?.listingType?.[0]||"";
-        const bestOffer = item.listingInfo?.[0]?.bestOfferEnabled?.[0]==="true";
-        const isFixed = ["FixedPrice","StoreInventory","AuctionWithBIN"].includes(listingType);
-        const isAuctionOnly = listingType==="Auction" && !bestOffer;
-        if (isAuctionOnly) { dropLog.auction++; continue; }
+        const buyingOptions = item.buyingOptions||[];
+        const isFixed   = buyingOptions.includes("FIXED_PRICE");
+        const hasBestOffer = buyingOptions.includes("BEST_OFFER");
+        if (!isFixed && !hasBestOffer) continue;
 
-        const priceVal = parseFloat(item.sellingStatus?.[0]?.currentPrice?.[0]?.__value__||0);
-        const shipping = parseFloat(item.shippingInfo?.[0]?.shippingServiceCost?.[0]?.__value__||4.99);
+        const priceVal  = parseFloat(item.price?.value||0);
+        const shipping  = parseFloat(item.shippingOptions?.[0]?.shippingCost?.value||4.99);
         const totalCost = (priceVal + shipping) * (1 + taxRate);
-        const imgUrl = item.pictureURLSuperSize?.[0]||item.pictureURLLarge?.[0]||item.galleryURL?.[0]||"";
-        const viewUrl = item.viewItemURL?.[0]||"";
+        const imgUrl    = item.image?.imageUrl||"";
+        const viewUrl   = item.itemWebUrl||"";
 
-        // --- Graded / Sealed: use market rate logic ---
+        // Graded or Sealed
         if (isGraded(title) || isSealed(title)) {
           const kind = isGraded(title) ? "graded" : "sealed";
-          setStatus(`${kind==="graded"?"💎":"📦"} Checking ${kind} market rate for: ${title.substring(0,40)}...`, "running");
-          const marketRate = await fetchSoldPrice(title);
+          setStatus(`${kind==="graded"?"💎":"📦"} Checking market rate...`, "running");
+          const soldData = await ebaySold(title.substring(0,60));
+          const soldItems = soldData.itemSummaries||[];
+          const prices = soldItems.map(s=>parseFloat(s.price?.value||0)).filter(p=>p>0);
+          const marketRate = prices.length ? prices.reduce((a,b)=>a+b,0)/prices.length : null;
           if (marketRate && totalCost <= marketRate * gradedPct) {
             passing.push({ id, title, priceVal, shipping, totalCost, imgUrl, viewUrl,
-              type: kind, cpc: null, cardCount: null, countSource:"n/a",
-              marketRate, savings: Math.round((1-totalCost/marketRate)*100),
-              action:"buy", bestOffer, suggestedOffer:null,
-              composition: null, blendedThreshold: null });
+              type:kind, cpc:null, cardCount:null, countSource:"n/a",
+              marketRate, savings:Math.round((1-totalCost/marketRate)*100),
+              action:"buy", suggestedOffer:null, composition:null });
           }
           continue;
         }
 
-        // --- Bulk lots: get card count ---
+        // Card count
         let cardCount = extractCount(title);
         let countSource = "text";
         if (!cardCount && imgUrl) {
-          setStatus(`🤖 AI estimating card count...`, "running");
-          cardCount = await aiCountFromPhoto(imgUrl, title);
-          countSource = "ai"; aiUsed++;
+          setStatus(`🤖 AI counting cards...`, "running");
+          cardCount = await aiCount(imgUrl, title);
+          if (cardCount) { countSource = "ai"; aiUsed++; }
         }
-        if (!cardCount) { dropLog.noCount++; continue; }
+        if (!cardCount) { drop.noCount++; continue; }
 
-        // --- Detect if mixed ---
-        const hasHolo    = isHolo(title);
-        const hasForeign = isForeign(title);
-        const titleText  = title.toLowerCase();
-        const isMixed = (hasHolo && hasForeign) ||
-          (hasHolo && GRADED_KW.some(k=>titleText.includes(k))) ||
-          (hasForeign && GRADED_KW.some(k=>titleText.includes(k))) ||
-          (hasHolo || hasForeign); // any combo = worth AI analyzing
-
-        let composition = null;
-        let blendedThreshold = null;
+        // Composition for mixed lots
+        const hasHolo = isHolo(title), hasForeign = isForeign(title);
+        const isMixed = hasHolo || hasForeign;
+        let composition = null, blendedThreshold = null;
 
         if (isMixed) {
-          setStatus(`🤖 AI analyzing lot composition...`, "running");
-          composition = await analyzeComposition(imgUrl, title, "", cardCount, rates);
+          setStatus(`🤖 AI analyzing composition...`, "running");
+          composition = await aiComposition(imgUrl, title, cardCount, rates);
           aiUsed++;
           if (composition) {
-            const avgGraded = composition.graded > 0 ? await fetchSoldPrice(title) : null;
-            blendedThreshold = await calcBlendedThreshold(composition, cardCount, rates, avgGraded);
+            const { holos=0, foreign=0, graded=0, bulk=0 } = composition;
+            blendedThreshold = ((holos*rates.holo)+(foreign*rates.foreign)+(graded*rates.holo)+(bulk*rates.bulk)) / cardCount;
           }
         }
 
-        const threshold = blendedThreshold || (hasHolo ? rates.holo : hasForeign ? rates.foreign : rates.bulk);
+        const threshold      = blendedThreshold || (hasHolo ? rates.holo : hasForeign ? rates.foreign : rates.bulk);
         const thresholdOffer = threshold * 2;
-        const cpc = totalCost / cardCount;
+        const cpc            = totalCost / cardCount;
 
-        const qualifiesBuy   = isFixed   && cpc <= threshold;
-        const qualifiesOffer = bestOffer  && cpc <= thresholdOffer;
-        if (!qualifiesBuy && !qualifiesOffer) { dropLog.tooExpensive++; continue; }
+        const qualifiesBuy   = isFixed      && cpc <= threshold;
+        const qualifiesOffer = hasBestOffer  && cpc <= thresholdOffer;
+        if (!qualifiesBuy && !qualifiesOffer) { drop.tooExpensive++; continue; }
 
         const action = qualifiesBuy ? "buy" : "offer";
-        const targetCPC = threshold;
         const suggestedOffer = action==="offer"
-          ? Math.max(0, (targetCPC * cardCount / (1+taxRate)) - shipping).toFixed(2)
+          ? Math.max(0, (threshold * cardCount / (1+taxRate)) - shipping).toFixed(2)
           : null;
 
         passing.push({ id, title, priceVal, shipping, totalCost, imgUrl, viewUrl,
-          type: isMixed ? "mixed" : hasHolo ? "holo" : hasForeign ? "foreign" : "bulk",
-          cpc, cardCount, countSource, marketRate: null,
-          action, bestOffer, suggestedOffer,
-          composition, blendedThreshold: blendedThreshold ? blendedThreshold.toFixed(3) : null,
-          holo: hasHolo, foreign: hasForeign });
+          type: isMixed?"mixed":hasHolo?"holo":hasForeign?"foreign":"bulk",
+          cpc, cardCount, countSource, marketRate:null,
+          action, suggestedOffer, composition,
+          blendedThreshold: blendedThreshold?blendedThreshold.toFixed(3):null,
+          holo:hasHolo, foreign:hasForeign });
       }
-    } catch(e) {
-      dbg(`ERROR: ${term} → ${e.message}`);
-      console.error(term, e);
-    }
+    } catch(e) { dbg(`ERROR: ${term} → ${e.message}`); }
   }
 
-  setStatus(`✅ Done — ${passing.length} deals from ${totalFetched} listings scanned (${aiUsed} AI calls used)`, "done");
+  dbg(`\nDone. Fetched:${totalFetched} noWOTC:${drop.noWOTC} noCount:${drop.noCount} tooExpensive:${drop.tooExpensive} passing:${passing.length}`);
+  setStatus(`✅ Done — ${passing.length} deals from ${totalFetched} listings (${aiUsed} AI calls)`, "done");
   document.getElementById("runBtn").disabled = false;
 
   if (!passing.length) {
-    document.getElementById("results").innerHTML = `<div class="empty"><div class="icon">😔</div><p>No deals found right now. Try again later or adjust thresholds.</p></div>`;
+    document.getElementById("results").innerHTML = `<div class="empty"><div class="icon">😔</div><p>No deals found. Check debug panel for details.</p></div>`;
     return;
   }
 
@@ -439,62 +351,58 @@ async function runFilter() {
 
   const sb = document.getElementById("summaryBar");
   sb.style.display = "flex";
-  sb.innerHTML = `<span>Scanned: <strong>${totalFetched}</strong></span><span>Deals: <strong>${passing.length}</strong></span><span>AI calls: <strong>${aiUsed}</strong></span><span>Best deal: <strong>${passing[0]?.cpc?"$"+passing[0].cpc.toFixed(3)+"/card":passing[0]?.savings+"% below market"}</strong></span>`;
+  sb.innerHTML = `<span>Scanned: <strong>${totalFetched}</strong></span><span>Deals: <strong>${passing.length}</strong></span><span>AI calls: <strong>${aiUsed}</strong></span><span>Best: <strong>${passing[0]?.cpc?"$"+passing[0].cpc.toFixed(3)+"/card":passing[0]?.savings+"% below market"}</strong></span>`;
+
+  const typeLabels = { graded:"Graded",sealed:"Sealed",mixed:"Mixed Lot",holo:"Holos",foreign:"Non-English",bulk:"WOTC Bulk" };
+  const typeBadges = { graded:"graded",sealed:"sealed",mixed:"mixed",holo:"holo",foreign:"nonenglish",bulk:"bulk" };
 
   document.getElementById("results").innerHTML = passing.map(item => {
-    const typeLabels = { graded:"Graded", sealed:"Sealed", mixed:"Mixed Lot", holo:"Holos", foreign:"Non-English", bulk:"WOTC Bulk" };
-    const typeBadges = { graded:"graded", sealed:"sealed", mixed:"mixed", holo:"holo", foreign:"nonenglish", bulk:"bulk" };
-    const cpcDisplay = item.cpc ? `$${item.cpc.toFixed(3)}/card` : `${item.savings}% below market`;
-    const cpcClass = !item.cpc ? "green" : item.cpc < 0.10 ? "green" : "yellow";
-    const countDisplay = item.type==="graded" ? "1 (graded)" : item.type==="sealed" ? "Sealed product" : `~${item.cardCount?.toLocaleString()}`;
+    const cpcDisplay  = item.cpc ? `$${item.cpc.toFixed(3)}/card` : `${item.savings}% below market`;
+    const cpcClass    = !item.cpc?"green":item.cpc<0.10?"green":"yellow";
+    const countDisplay= item.type==="graded"?"1 (graded)":item.type==="sealed"?"Sealed":`~${item.cardCount?.toLocaleString()}`;
 
     const compHTML = item.composition ? `
       <div class="composition">
-        <strong>🔬 AI Lot Composition (blended threshold: $${item.blendedThreshold}/card)</strong>
-        ${item.composition.holos > 0 ? `<div class="comp-row"><span>🌟 Holos</span><span>${item.composition.holos} cards @ $${rates.holo}/ea</span></div>` : ""}
-        ${item.composition.foreign > 0 ? `<div class="comp-row"><span>🌏 Non-English</span><span>${item.composition.foreign} cards @ $${rates.foreign}/ea</span></div>` : ""}
-        ${item.composition.graded > 0 ? `<div class="comp-row"><span>💎 Graded</span><span>${item.composition.graded} slabs</span></div>` : ""}
-        ${item.composition.bulk > 0 ? `<div class="comp-row"><span>📦 Bulk</span><span>${item.composition.bulk} cards @ $${rates.bulk}/ea</span></div>` : ""}
-        ${item.composition.reasoning ? `<div style="margin-top:6px;font-style:italic;color:#666">${item.composition.reasoning}</div>` : ""}
+        <strong>🔬 AI Composition (blended: $${item.blendedThreshold}/card)</strong>
+        ${item.composition.holos>0?`<div class="comp-row"><span>🌟 Holos</span><span>${item.composition.holos} @ $${rates.holo}/ea</span></div>`:""}
+        ${item.composition.foreign>0?`<div class="comp-row"><span>🌏 Non-English</span><span>${item.composition.foreign} @ $${rates.foreign}/ea</span></div>`:""}
+        ${item.composition.graded>0?`<div class="comp-row"><span>💎 Graded</span><span>${item.composition.graded} slabs</span></div>`:""}
+        ${item.composition.bulk>0?`<div class="comp-row"><span>📦 Bulk</span><span>${item.composition.bulk} @ $${rates.bulk}/ea</span></div>`:""}
+        ${item.composition.reasoning?`<div style="margin-top:6px;font-style:italic;color:#666">${item.composition.reasoning}</div>`:""}
       </div>` : "";
 
     const marketHTML = item.marketRate ? `
-      <div class="stat"><div class="stat-label">Avg Market Price</div><div class="stat-value">$${item.marketRate.toFixed(2)}</div></div>
-      <div class="stat"><div class="stat-label">You Save</div><div class="stat-value green">${item.savings}% below market</div></div>` : "";
+      <div class="stat"><div class="stat-label">Avg Market</div><div class="stat-value">$${item.marketRate.toFixed(2)}</div></div>
+      <div class="stat"><div class="stat-label">You Save</div><div class="stat-value green">${item.savings}% below</div></div>` : "";
 
     const offerHTML = item.action==="offer" ? `
       <div class="stat" style="grid-column:1/-1;background:#f4a26115;border:1px solid #f4a26133">
-        <div class="stat-label">💡 Suggested Offer (hits target $/card)</div>
+        <div class="stat-label">💡 Suggested Offer</div>
         <div class="stat-value yellow">$${item.suggestedOffer}</div>
       </div>` : "";
 
     return `<div class="card">
-      ${item.imgUrl ? `<img src="${item.imgUrl}" alt="listing" loading="lazy" onerror="this.style.display='none'">` : ""}
+      ${item.imgUrl?`<img src="${item.imgUrl}" alt="" loading="lazy" onerror="this.style.display='none'">`:""}
       <div class="card-body">
         <div class="card-title">${item.title}</div>
         <div class="badges">
           <span class="badge ${typeBadges[item.type]}">${typeLabels[item.type]}</span>
-          ${item.action==="buy" ? `<span class="badge buynow">🟢 Buy Now</span>` : `<span class="badge makeoffer">🟡 Make Offer</span>`}
-          ${item.countSource==="ai" ? `<span class="badge ai">🤖 AI count</span>` : ""}
+          ${item.action==="buy"?`<span class="badge buynow">🟢 Buy Now</span>`:`<span class="badge makeoffer">🟡 Make Offer</span>`}
+          ${item.countSource==="ai"?`<span class="badge ai">🤖 AI count</span>`:""}
         </div>
         ${compHTML}
         <div class="stats">
           <div class="stat"><div class="stat-label">Cost Per Card</div><div class="stat-value ${cpcClass}">${cpcDisplay}</div></div>
-          <div class="stat"><div class="stat-label">Est. Card Count</div><div class="stat-value">${countDisplay}</div></div>
-          <div class="stat"><div class="stat-label">Total Cost (w/ tax)</div><div class="stat-value">$${item.totalCost.toFixed(2)}</div></div>
+          <div class="stat"><div class="stat-label">Card Count</div><div class="stat-value">${countDisplay}</div></div>
+          <div class="stat"><div class="stat-label">Total Cost</div><div class="stat-value">$${item.totalCost.toFixed(2)}</div></div>
           <div class="stat"><div class="stat-label">Listed Price</div><div class="stat-value">$${item.priceVal.toFixed(2)}</div></div>
-          ${marketHTML}
-          ${offerHTML}
+          ${marketHTML}${offerHTML}
         </div>
         <a class="view-btn" href="${item.viewUrl}" target="_blank">View on eBay →</a>
       </div>
     </div>`;
   }).join("");
-
-
 }
-
-init();
 </script>
 </body>
 </html>
