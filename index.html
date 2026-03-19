@@ -150,6 +150,8 @@ function setStatus(msg, cls="") {
   el.textContent = msg; el.className = "status " + cls;
 }
 
+const YEAR_RE = /^(19|20)\d{2}$/;
+
 function extractCount(text) {
   const t = (text||"").toLowerCase();
   const patterns = [
@@ -160,7 +162,11 @@ function extractCount(text) {
   ];
   for (const p of patterns) {
     const m = t.match(p);
-    if (m) { const n = parseInt(m[1]); if (n >= 5 && n <= 10000) return n; }
+    if (m) {
+      const n = parseInt(m[1]);
+      if (YEAR_RE.test(m[1])) continue; // skip years like 1999, 2000
+      if (n >= 5 && n <= 10000) return n;
+    }
   }
   return null;
 }
