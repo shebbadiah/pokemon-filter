@@ -80,7 +80,7 @@
     <input type="number" id="maxHolo" value="0.50" step="0.05" min="0.01" style="width:80px">
   </div>
   <div class="ctrl-group">
-    <label>Graded/Sealed max % of market</label>
+    <label>Graded max % of market</label>
     <input type="number" id="gradedPct" value="50" step="5" min="10" max="90" style="width:70px">
   </div>
   <div class="ctrl-group">
@@ -279,10 +279,10 @@ async function runFilter() {
         const imgUrl    = item.image?.imageUrl||"";
         const viewUrl   = item.itemWebUrl||"";
 
-        // Graded or Sealed
-        if (isGraded(title) || isSealed(title)) {
-          const kind = isGraded(title) ? "graded" : "sealed";
-          setStatus(`${kind==="graded"?"💎":"📦"} Checking market rate...`, "running");
+        // Graded
+        if (isGraded(title)) {
+          const kind = "graded";
+          setStatus(`${💎 Checking market rate...`, "running");
           const soldData = await ebaySold(title.substring(0,60));
           const soldItems = soldData.itemSummaries||[];
           const prices = soldItems.map(s=>parseFloat(s.price?.value||0)).filter(p=>p>0);
