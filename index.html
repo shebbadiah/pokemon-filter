@@ -266,7 +266,7 @@ async function runFilter() {
         seen.add(id);
 
         const title = item.title||"";
-        if (!isWOTC(title)) { drop.noWOTC++; continue; }
+        if (!isWOTC(title)) { drop.noWOTC++; continue; }        if (title.toLowerCase().includes("modern")) { drop.noWOTC++; continue; }
 
         const buyingOptions = item.buyingOptions||[];
         const isFixed   = buyingOptions.includes("FIXED_PRICE");
