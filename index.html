@@ -9,7 +9,7 @@
   body { font-family: system-ui, sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; }
   header { background: #1a1a2e; padding: 16px 24px; border-bottom: 2px solid #e63946; display: flex; align-items: center; gap: 12px; }
   header h1 { font-size: 1.2rem; color: #fff; }
-  .controls { padding: 16px 24px; background: #1a1a2e; border-bottom: 1px solid #2a2a4a; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .controls { padding: 16px 24px; background: #1a1a2e; border-bottom: 1px solid #2a2a4a; dihsplay: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
   .controls input[type=number], .controls select { background: #0f0f1a; border: 1px solid #2a2a4a; color: #fff; padding: 8px 12px; border-radius: 8px; font-size: 0.85rem; }
   .ctrl-group { display: flex; flex-direction: column; gap: 4px; }
   .ctrl-group label { font-size: 0.8rem; color: #aaa; }
@@ -266,7 +266,7 @@ async function runFilter() {
         seen.add(id); if (getHidden().has(String(id))) continue;
 
         const title = item.title||"";
-        if (!isWOTC(title)) { drop.noWOTC++; continue; }        if (title.toLowerCase().includes("modern")) { drop.noWOTC++; continue; }
+        if (!isWOTC(title)) { drop.noWOTC++; continue; }        if (title.toLowerCase().includes("modern")) { drop.noWOTC++; continue; }        if ((item.itemLocation?.country||"").toUpperCase() !== "US") { drop.noWOTC++; continue; }        if ((item.quantity||1) > 1) { drop.noWOTC++; continue; }
 
         const buyingOptions = item.buyingOptions||[];
         const isFixed   = buyingOptions.includes("FIXED_PRICE");
