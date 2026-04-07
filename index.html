@@ -137,7 +137,7 @@ const isForeign = t => has(t.toLowerCase(), FOREIGN_KW);
 const isWOTC    = t => has(t.toLowerCase(), WOTC_SETS) || t.toLowerCase().includes("vintage") || t.toLowerCase().includes("wotc");
 
 const HIDDEN_KEY = "pf_hidden";function getHidden() { try { return new Set(JSON.parse(localStorage.getItem(HIDDEN_KEY)||"[]")); } catch { return new Set(); } }
-  const p = document.getElementById("debugPanel");
+  function hideItem(id) { const h = getHidden(); h.add(String(id)); localStorage.setItem(HIDDEN_KEY, JSON.stringify([...h])); const el = document.getElementById("card-"+id); if (el) el.remove(); } function dbg(msg) { const p = document.getElementById("debugPanel");
   p.textContent += msg + "\n";
   console.log(msg);
 }
