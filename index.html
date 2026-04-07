@@ -136,7 +136,7 @@ const isHolo    = t => has(t.toLowerCase(), HOLO_KW);
 const isForeign = t => has(t.toLowerCase(), FOREIGN_KW);
 const isWOTC    = t => has(t.toLowerCase(), WOTC_SETS) || t.toLowerCase().includes("vintage") || t.toLowerCase().includes("wotc");
 
-function dbg(msg) {
+const HIDDEN_KEY = "pf_hidden";function getHidden() { try { return new Set(JSON.parse(localStorage.getItem(HIDDEN_KEY)||"[]")); } catch { return new Set(); } }
   const p = document.getElementById("debugPanel");
   p.textContent += msg + "\n";
   console.log(msg);
@@ -263,7 +263,7 @@ async function runFilter() {
       for (const item of items) {
         const id = item.itemId;
         if (!id || seen.has(id)) continue;
-        seen.add(id);
+        seen.add(id); if (getHidden().has(String(id))) continue;
 
         const title = item.title||"";
         if (!isWOTC(title)) { drop.noWOTC++; continue; }        if (title.toLowerCase().includes("modern")) { drop.noWOTC++; continue; }
@@ -387,10 +387,10 @@ async function runFilter() {
         <div class="stat-value yellow">$${item.suggestedOffer}</div>
       </div>` : "";
 
-    return `<div class="card">
+    return `<div class="card" id="card-${item.id}">
       ${item.imgUrl?`<img src="${item.imgUrl}" alt="" loading="lazy" onerror="this.style.display='none'">`:""}
       <div class="card-body">
-        <div class="card-title">${item.title}</div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;gap:8px"><div class="card-title" style="margin-bottom:0;flex:1">${item.title}</div><button onclick="hideItem('${item.id}')" title="Never show again" style="flex-shrink:0;background:none;border:none;cursor:pointer;font-size:1rem;color:#555;padding:0 2px;line-height:1" onmouseover="this.style.color='#e63946'" onmouseout="this.style.color='#555'">✕</button></div>
         <div class="badges">
           <span class="badge ${typeBadges[item.type]}">${typeLabels[item.type]}</span>
           ${item.action==="buy"?`<span class="badge buynow">🟢 Buy Now</span>`:`<span class="badge makeoffer">🟡 Make Offer</span>`}
