@@ -12,7 +12,7 @@
   .controls { padding: 16px 24px; background: #1a1a2e; border-bottom: 1px solid #2a2a4a; dihsplay: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
   .controls input[type=number], .controls select { background: #0f0f1a; border: 1px solid #2a2a4a; color: #fff; padding: 8px 12px; border-radius: 8px; font-size: 0.85rem; }
   .ctrl-group { display: flex; flex-direction: column; gap: 4px; }
-  .ctrl-group label { font-size: 0.8rem; color: #aaa; }
+  .ctrl-group label { font-size: 0.8rem; color: #aaa; }h
   .btn { background: #e63946; color: #fff; border: none; padding: 10px 24px; border-radius: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 600; transition: background 0.2s; }
   .btn:hover { background: #c1121f; }
   .btn:disabled { background: #444; cursor: not-allowed; }
@@ -282,7 +282,7 @@ async function runFilter() {
         // Graded
         if (isGraded(title)) {
           const kind = "graded";
-          setStatus(`${💎 Checking market rate...`, "running");
+          setStatus(`💎 Checking market rate...`, "running");
           const soldData = await ebaySold(title.substring(0,60));
           const soldItems = soldData.itemSummaries||[];
           const prices = soldItems.map(s=>parseFloat(s.price?.value||0)).filter(p=>p>0);
