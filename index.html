@@ -11,7 +11,7 @@
   header h1 { font-size: 1.2rem; color: #fff; }
   .controls { padding: 16px 24px; background: #1a1a2e; border-bottom: 1px solid #2a2a4a; dihsplay: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
   .controls input[type=number], .controls select { background: #0f0f1a; border: 1px solid #2a2a4a; color: #fff; padding: 8px 12px; border-radius: 8px; font-size: 0.85rem; }
-  .ctrl-group { display: flex; flex-direction: column; gap: 4px; }
+  .ctrl-group { display: flex; flex-direction: column; gap: 4px; }h
   .ctrl-group label { font-size: 0.8rem; color: #aaa; }h
   .btn { background: #e63946; color: #fff; border: none; padding: 10px 24px; border-radius: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 600; transition: background 0.2s; }
   .btn:hover { background: #c1121f; }
@@ -87,8 +87,8 @@
     <label>Results per term</label>
     <select id="perPage">
       <option value="50">50</option>
-      <option value="100" selected>100</option>
-      <option value="200">200</option>
+      <option value="100">100</option>
+      <option value="200" selected>200</option>
     </select>
   </div>
   <button class="btn" id="runBtn" onclick="runFilter()">🔍 Run Filter</button>
@@ -117,11 +117,18 @@ const SEARCH_TERMS = [
   "vinatge pokemon lot","wotc pokeman","wotc pokamon",
   "wizards coast pokemon lot","pokemon bluk lot","pokemon buld lot",
   "poke cards lot","poke card bulk","poke mon cards lot"
-];
+,
+  "team rocket pokemon lot","team rocket pokemon bulk","team rocket cards lot",
+  "gym heroes pokemon lot","gym challenge pokemon lot","pokemon gym set lot",
+  "neo genesis pokemon lot","neo discovery pokemon lot","neo revelation pokemon lot","neo destiny pokemon lot",
+  "neo pokemon lot","neo series pokemon bulk","neo pokemon bulk",
+  "expedition pokemon lot","aquapolis pokemon lot","skyridge pokemon lot",
+  "e-series pokemon lot","pokemon e series lot","nintendo era pokemon lot",
+  "expedition pokemon bulk","aquapolis pokemon bulk","skyridge pokemon bulk"];
 
 const WOTC_SETS = ["base set","jungle","fossil","team rocket","gym heroes","gym challenge",
   "neo genesis","neo discovery","neo revelation","neo destiny","southern islands",
-  "legendary collection","wizards","wotc","1999","2000","2001","shadowless"];
+  "legendary collection","wizards","wotc","1999","2000","2001","shadowless","expedition","aquapolis","skyridge","e-series","nintendo era"];
 const GRADED_KW  = ["psa","bgs","cgc","ace","sgc","graded","slab","slabbed"];
 const SEALED_KW  = ["sealed","booster box","booster pack","factory sealed","tin","etb",
   "elite trainer box","theme deck","starter deck","blister","booster bundle","unopened"];
