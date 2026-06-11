@@ -91,6 +91,10 @@
       <option value="200" selected>200</option>
     </select>
   </div>
+  <div class="ctrl-group">
+    <label>Min listing $</label>
+    <input type="number" id="minListing" value="5" step="1" min="0" style="width:80px">
+  </div>
   <button class="btn" id="runBtn" onclick="runFilter()">🔍 Run Filter</button>
   <button class="btn secondary" onclick="toggleDebug()">🐛 Debug</button>
 </div>
@@ -246,6 +250,7 @@ async function runFilter() {
   };
   const gradedPct = (parseFloat(document.getElementById("gradedPct").value)||50)/100;
   const perPage   = parseInt(document.getElementById("perPage").value)||100;
+  const minListing = parseFloat(document.getElementById("minListing").value)||5;
   const taxRate   = 0.08;
 
   document.getElementById("runBtn").disabled = true;
@@ -255,7 +260,7 @@ async function runFilter() {
 
   const seen = new Set(), passing = [];
   let totalFetched = 0, aiUsed = 0;
-  const drop = { noWOTC:0, noCount:0, tooExpensive:0 };
+  const drop = { noWOTC:0, noCount:0, tooLow:0, tooExpensive:0 };
 
   for (let i = 0; i < SEARCH_TERMS.length; i++) {
     const term = SEARCH_TERMS[i];
@@ -283,6 +288,7 @@ async function runFilter() {
         const priceVal  = parseFloat(item.price?.value||0);
         const shipping  = parseFloat(item.shippingOptions?.[0]?.shippingCost?.value||4.99);
         const totalCost = (priceVal + shipping) * (1 + taxRate);
+        if (totalCost < minListing) { drop.tooLow++; continue; }
         const imgUrl    = item.image?.imageUrl||"";
         const viewUrl   = item.itemWebUrl||"";
 
